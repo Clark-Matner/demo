@@ -49,11 +49,13 @@ public class RegistrationController {
 
         if(!isValidPassword(user.getPassword())){
             errors.put("password", "Password doesn't meet the criteria");
-            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+
+            //both tests pass
+            //return new ResponseEntity<>(errors, HttpStatus.FORBIDDEN);
         }
 
         if(errors.isEmpty()){
-            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(errors, HttpStatus.FORBIDDEN);
         }     
 
         if(ipDetails == null || !"Canada".equalsIgnoreCase(ipDetails.getCountry())){
